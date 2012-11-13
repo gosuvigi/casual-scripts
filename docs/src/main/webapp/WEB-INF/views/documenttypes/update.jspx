@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_ro_vigi_docs_domain_DocumentType" modelAttribute="documentType" path="/documenttypes" versionField="Version" z="bjAD+BHLWlaVu4iAAYCxFl5+hXY=">
+        <field:textarea field="name" id="c_ro_vigi_docs_domain_DocumentType_name" required="true" z="KzFGb9IvScq1ATUKCO48rcMuBvk="/>
+        <field:textarea field="description" id="c_ro_vigi_docs_domain_DocumentType_description" z="ekodFfIcp7BJ2DtwpZ5BpMxQst8="/>
+    </form:update>
+</div>
