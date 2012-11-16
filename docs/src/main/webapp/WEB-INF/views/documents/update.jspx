@@ -4,7 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_ro_vigi_docs_domain_Document" modelAttribute="document" path="/documents" versionField="Version" z="CVH/rdUljsiWXY4Ne7LMAbgm8Mk=">
         <field:textarea field="title" id="c_ro_vigi_docs_domain_Document_title" required="true" z="yWWCwjPIdwPaFdpKB9RMas6isHo="/>
-        <field:textarea field="mimeType" id="c_ro_vigi_docs_domain_Document_mimeType" required="true" z="PC1x8EC8JUDqa1N4gahiwBFGXqE="/>
+        <field:input field="mimeType" id="c_ro_vigi_docs_domain_Document_mimeType" max="20" required="true" z="fJLd1AKT87WTZQY/bA0lJ3ry2/c="/>
         <field:select field="documentType" id="c_ro_vigi_docs_domain_Document_documentType" itemValue="id" items="${documenttypes}" path="/documenttypes" z="YR+hUdzKeeakieZqNGJT5+GviTA="/>
         <field:textarea field="fileContent" id="c_ro_vigi_docs_domain_Document_fileContent" z="nwClmzrwHilbUSfUxAoIARPmfiM="/>
     </form:update>
