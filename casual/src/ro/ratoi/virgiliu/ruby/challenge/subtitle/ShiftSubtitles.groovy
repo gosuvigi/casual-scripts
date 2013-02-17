@@ -16,25 +16,51 @@ final class ShiftSubtitles {
 	}
 
 	private static void shift(final String inputFile, long millis) {
+		//		def inFile = new File(inputFile)
+		//		if (!inFile.exists()) {
+		//			throw new IllegalArgumentException('Please provide a valid existing file.')
+		//		}
+		//		def outFile = new File(inputFile + '_new.srt')
+		//		if (outFile.exists()) {
+		//			outFile.write('')
+		//		}
+		//
+		//		outFile.withWriter { out ->
+		//			inFile.eachLine { line ->
+		//				def containsTimeFrame = TimeFrame.shiftSubtitle(line, millis)
+		//				if (containsTimeFrame) {
+		//					out.writeLine(containsTimeFrame)
+		//				} else {
+		//					out.writeLine(line)
+		//				}
+		//			}
+		//		}
+		performOperationOnFile(inputFile) { TimeFrame.shiftSubtitle(it, millis) }
+	}
+
+	private static void performOperationOnFile(String inputFile, Closure operation) {
 		def inFile = new File(inputFile)
 		if (!inFile.exists()) {
 			throw new IllegalArgumentException('Please provide a valid existing file.')
 		}
-		def outFile = new File(inputFile + '.srt')
+		def outFile = new File(inputFile + '_new.srt')
 		if (outFile.exists()) {
 			outFile.write('')
 		}
 
 		outFile.withWriter { out ->
 			inFile.eachLine { line ->
-				def sub = TimeFrame.shiftSubtitle(line, millis)
-				if (sub) {
-					out.writeLine(sub)
+				def containsTimeFrame = operation.call(line)
+				if (containsTimeFrame) {
+					out.writeLine(containsTimeFrame)
 				} else {
 					out.writeLine(line)
 				}
 			}
 		}
+	}
+
+	static void convert23FpsTo25Fps(String inputFile) {
 	}
 }
 

@@ -6,8 +6,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
-import ro.ratoi.virgiliu.array.MultipleArrayDuplicates
-
 /**
  * 
  * @author Virgiliu
@@ -31,7 +29,7 @@ final class MultipleArrayDuplicatesTest extends GroovyTestCase {
 		[1, 7],
 		[2, 3, 4],
 		[3],
-		[1, 3, 6]
+		[1, 6, 3]
 	]
 
 	@Before

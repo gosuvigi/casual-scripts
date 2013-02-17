@@ -16,6 +16,8 @@ final class TimeFrame {
 	static final int MILLIS_IN_HOUR = 3600000
 	static final int MILLIS_IN_MINUTE = 60000
 	static final int MILLIS_IN_SECOND = 1000
+	static final int FPS_24 = 23976
+	static final int FPS_25 = 25000
 
 	final int hh
 	final int mm
@@ -28,8 +30,7 @@ final class TimeFrame {
 		this.mm = mm;
 		this.ss = ss;
 		this.millis = millis;
-		totalMillis = millis + ss * MILLIS_IN_SECOND + mm * MILLIS_IN_MINUTE
-		+ hh * MILLIS_IN_HOUR
+		totalMillis = millis + ss * MILLIS_IN_SECOND + mm * MILLIS_IN_MINUTE + hh * MILLIS_IN_HOUR
 	}
 
 	@Override
@@ -64,7 +65,7 @@ final class TimeFrame {
 	 * @param s
 	 * @return
 	 */
-	static final TimeFrame extractSingleTimeFrame(final String s) {
+	static final TimeFrame valueOf(final String s) {
 		def matcher = (s =~ TIME)
 		if (matcher.matches()) {
 			def hh = matcher[0][1].toInteger()
@@ -117,12 +118,25 @@ final class TimeFrame {
 		if (matcher.matches()) {
 			def m1 = matcher[0][1]
 			def m2 = matcher[0][6]
-			def tf1 = extractSingleTimeFrame(m1)
-			def tf2 = extractSingleTimeFrame(m2)
+			def tf1 = valueOf(m1)
+			def tf2 = valueOf(m2)
 			def add1 = tf1.addMillis(millis)
 			def add2 = tf2.addMillis(millis)
 			return add1.toString() + ' --> ' + add2.toString()
 		}
 		return null
+	}
+
+	final TimeFrame convert24FpsTo25Fps() {
+		convertFromInputFpsToOutputFps(FPS_24, FPS_25)
+	}
+
+	final TimeFrame convert25FpsTo24Fps() {
+		convertFromInputFpsToOutputFps(FPS_25, FPS_24)
+	}
+
+	final TimeFrame convertFromInputFpsToOutputFps(int inputFps, int outputFps) {
+		int resultMillis = totalMillis * inputFps / outputFps
+		return TimeFrame.valueOf(resultMillis)
 	}
 }
