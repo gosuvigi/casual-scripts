@@ -127,6 +127,34 @@ final class TimeFrame {
 		return null
 	}
 
+	final static convert23FpsTo25FpsSubtitle(final String subtitle) {
+		def matcher = (subtitle =~ /($TIME) --> ($TIME)/)
+		if (matcher.matches()) {
+			def m1 = matcher[0][1]
+			def m2 = matcher[0][6]
+			def tf1 = valueOf(m1)
+			def tf2 = valueOf(m2)
+			def add1 = tf1.convert24FpsTo25Fps()
+			def add2 = tf2.convert24FpsTo25Fps()
+			return add1.toString() + ' --> ' + add2.toString()
+		}
+		return null
+	}
+
+	final static convert25FpsTo23FpsSubtitle(final String subtitle) {
+		def matcher = (subtitle =~ /($TIME) --> ($TIME)/)
+		if (matcher.matches()) {
+			def m1 = matcher[0][1]
+			def m2 = matcher[0][6]
+			def tf1 = valueOf(m1)
+			def tf2 = valueOf(m2)
+			def add1 = tf1.convert25FpsTo24Fps()
+			def add2 = tf2.convert25FpsTo24Fps()
+			return add1.toString() + ' --> ' + add2.toString()
+		}
+		return null
+	}
+
 	final TimeFrame convert24FpsTo25Fps() {
 		convertFromInputFpsToOutputFps(FPS_24, FPS_25)
 	}

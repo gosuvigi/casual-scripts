@@ -8,7 +8,7 @@ import ro.ratoi.virgiliu.util.Benchmark
  * Oct 10, 2011
  *
  */
-final class ShiftSubtitles {
+final class TweakSubtitles {
 
 	static final void shiftSubtitles(final String inputFile, long millis) {
 		def time = Benchmark.benchmark({shift(inputFile, millis)})
@@ -16,25 +16,6 @@ final class ShiftSubtitles {
 	}
 
 	private static void shift(final String inputFile, long millis) {
-		//		def inFile = new File(inputFile)
-		//		if (!inFile.exists()) {
-		//			throw new IllegalArgumentException('Please provide a valid existing file.')
-		//		}
-		//		def outFile = new File(inputFile + '_new.srt')
-		//		if (outFile.exists()) {
-		//			outFile.write('')
-		//		}
-		//
-		//		outFile.withWriter { out ->
-		//			inFile.eachLine { line ->
-		//				def containsTimeFrame = TimeFrame.shiftSubtitle(line, millis)
-		//				if (containsTimeFrame) {
-		//					out.writeLine(containsTimeFrame)
-		//				} else {
-		//					out.writeLine(line)
-		//				}
-		//			}
-		//		}
 		performOperationOnFile(inputFile) { TimeFrame.shiftSubtitle(it, millis) }
 	}
 
@@ -43,7 +24,7 @@ final class ShiftSubtitles {
 		if (!inFile.exists()) {
 			throw new IllegalArgumentException('Please provide a valid existing file.')
 		}
-		def outFile = new File(inputFile + '_new.srt')
+		def outFile = new File(inputFile + "_new.srt")
 		if (outFile.exists()) {
 			outFile.write('')
 		}
@@ -61,6 +42,11 @@ final class ShiftSubtitles {
 	}
 
 	static void convert23FpsTo25Fps(String inputFile) {
+		performOperationOnFile(inputFile) { TimeFrame.convert23FpsTo25FpsSubtitle(it) }
+	}
+
+	static void convert25FpsTo23Fps(String inputFile) {
+		performOperationOnFile(inputFile) { TimeFrame.convert25FpsTo23FpsSubtitle(it) }
 	}
 }
 
