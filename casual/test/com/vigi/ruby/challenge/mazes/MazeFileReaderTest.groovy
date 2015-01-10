@@ -26,7 +26,7 @@ final class MazeFileReaderTest {
 #     #   #                 #     #B#
 #####################################"""
 
-	static final String FILE_PATH = 'test/ro/ratoi/virgiliu/ruby/challenge/mazes/mazes.txt'
+	static final String FILE_PATH = 'com/vigi/ruby/challenge/mazes/mazes.txt'
 
 	@Test
 	public final void testFromFile() {
