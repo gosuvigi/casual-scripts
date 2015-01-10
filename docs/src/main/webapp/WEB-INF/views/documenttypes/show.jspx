@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_ro_vigi_docs_domain_DocumentType" object="${documenttype}" path="/documenttypes" z="Cqe4BAs3j02qm0taFWXpmMypb+8=">
-        <field:display field="name" id="s_ro_vigi_docs_domain_DocumentType_name" object="${documenttype}" z="RgV0q99CHqu6CZ0apVLyACCx/bI="/>
-        <field:display field="description" id="s_ro_vigi_docs_domain_DocumentType_description" object="${documenttype}" z="evtN/YCofZkXnXbqpJFR+gZCi/I="/>
-    </page:show>
-</div>
