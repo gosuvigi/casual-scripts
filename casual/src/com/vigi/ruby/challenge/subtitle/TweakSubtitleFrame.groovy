@@ -1,7 +1,9 @@
 package com.vigi.ruby.challenge.subtitle
 
 import groovy.swing.SwingBuilder
+import org.codehaus.groovy.tools.shell.util.Preferences
 
+import javax.swing.SwingConstants
 import java.util.prefs.Preferences
 
 import javax.swing.JFileChooser
@@ -25,7 +27,7 @@ public class TweakSubtitleFrame {
 
 		JFrame frame = swing.frame(defaultCloseOperation: WC.EXIT_ON_CLOSE,
 		location: [400, 400],
-		size: [600, 300],
+		size: [900, 300],
 		title: 'Tweak Subtitles') {
 			def lastFolder = prefs.get(LAST_CHOOSER_DIR, System.getProperty("user.home"))
 			def fc = fileChooser(dialogTitle: 'Choose a subtitle',
