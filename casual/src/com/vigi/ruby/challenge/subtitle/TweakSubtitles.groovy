@@ -2,6 +2,10 @@ package com.vigi.ruby.challenge.subtitle
 
 import com.vigi.util.Benchmark
 
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
+
 /**
  * 
  * @author Virgiliu
@@ -24,10 +28,9 @@ final class TweakSubtitles {
 		if (!inFile.exists()) {
 			throw new IllegalArgumentException('Please provide a valid existing file.')
 		}
-		def outFile = new File(inputFile + "_new.srt")
-		if (outFile.exists()) {
-			outFile.write('')
-		}
+		Files.copy(Paths.get(inputFile), Paths.get(inputFile + ".old"), StandardCopyOption.REPLACE_EXISTING);
+		inFile = new File(inputFile + ".old")
+		def outFile = new File(inputFile)
 
 		outFile.withWriter { out ->
 			inFile.eachLine { line ->
