@@ -3,7 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vigi</groupId>
     <artifactId>casual</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>tesseract-ocr</module>
+    </modules>
     <name>casual</name>
     <dependencies>
         <dependency>
@@ -28,8 +32,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
